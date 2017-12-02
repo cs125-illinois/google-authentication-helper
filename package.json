@@ -1,0 +1,20 @@
+{
+  "name": "google-login-helper",
+  "version": "0.0.1",
+  "description": "Helper for Google login.",
+  "main": "lib/index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "serve": "http-server docs -p 3000",
+    "webpack": "webpack"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^0.10.0",
+    "uglifyjs-webpack-plugin": "^1.1.2",
+    "webpack": "^3.9.1"
+  }
+}
