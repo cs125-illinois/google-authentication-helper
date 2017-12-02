@@ -12,6 +12,6 @@ pre {
   height: 10rem;
 }
 #signin {
-  visibility: hidden;
+  display: none;
   border: none;
 }
