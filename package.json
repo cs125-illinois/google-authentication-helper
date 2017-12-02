@@ -1,5 +1,5 @@
 {
-  "name": "google-login-helper",
+  "name": "google-authentication-helper",
   "version": "0.0.1",
   "description": "Helper for Google login.",
   "main": "lib/index.js",
