@@ -3,9 +3,13 @@ hljs.initHighlightingOnLoad()
 window.googleLoginHelper
   .config('531745357390-akh3vsslmb6c3jmufjrqqr5qkif95g1i.apps.googleusercontent.com')
   .login(user => {
-    $("#signin").hide()
+    $("#output > pre").text(JSON.stringify(user, null, 2))
+    $("#signin").css('visibility', 'hidden')
   })
   .manual(error => {
-    $("#signin").show()
+    $("#signin").css('visibility', 'visible')
   })
-  .start()
+
+$("#start").click(() => {
+  window.googleLoginHelper.start()
+})

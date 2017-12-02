@@ -29,6 +29,7 @@
           This is a small library designed to help you integrate Google's
           client-side one-touch authentication into your website.
         </p>
+
         <h2>Requirements</h2>
         <p>
           You need your Google client ID in the page header:
@@ -36,10 +37,52 @@
 &lt;meta name="google-signin-client_id"
       content="531745357390-akh3vsslmb6c3jmufjrqqr5qkif95g1i.apps.googleusercontent.com"&gt;
           </code></pre>
-          <div id="signin" class="g-signin2" data-onsuccess="onSignIn" style=
-            "display:none;">
-          </div>
-        </div>
+        </p>
+
+        <p>
+          ...and to load Google's authentication libraries:
+          <pre><code class="html">
+&lt;script src="https://smartlock.google.com/client" async defer type="text/javascript"&gt;&lt;/script&gt;
+&lt;script src="https://apis.google.com/js/platform.js" async="" defer type="text/javascript"&gt;&lt;/script&gt;
+          </code></pre>
+          (These can be loaded asynchronously if you prefer.)
+        </p>
+
+        <p>
+          ...and to load this library:
+          <pre><code class="html">
+&lt;script src="google-authentication-helper.js" type="text/javascript"&gt;&lt;/script&gt;
+          </code></pre>
+        </p>
+        <p>
+          Now click the start button below to see what happens:
+        </p>
+        <button id="start" type="button" class="btn btn-success">Start</button>
+        <button id="signin" class="g-signin2" data-onsuccess="onSignIn"></button>
+        <div id="output" class="mt-2"><pre></pre></div>
+
+        <p>
+          Here's the code that accomplishes what happens above:
+        </p>
+        <pre><code class="javascript">window.googleLoginHelper
+  .config('531745357390-akh3vsslmb6c3jmufjrqqr5qkif95g1i.apps.googleusercontent.com')
+  .login(user => {
+    $("#output > pre").text(JSON.stringify(user, null, 2))
+    $("#signin").hide()
+  })
+  .manual(error => {
+    $("#signin").show()
+  })
+
+$("#start").click(() => {
+  window.googleLoginHelper.start()
+})</code></pre>
+        <p>
+          Try opening the page in an Incognito window. The manual strategy will
+          fall back to showing a login button, which will trigger an event also
+          handled by the library. The same login callback will be called with
+          the same information.
+        </p>
       </div>
     </div>
   </div>
